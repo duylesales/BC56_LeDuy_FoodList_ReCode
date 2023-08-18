@@ -1,14 +1,13 @@
 import { renderFoodList } from "./controller-v2.js";
+import foodServ from "../../service/service.js";
+import { layThongTin } from "../v1/controller-v1.js";
 
 // đặt hằng mặc định cho URL
-const BASE_URL = "https://64cc765e2eafdcdc8519da0a.mockapi.io/food";
 
 // render food list
 let fetchFoodList = () => {
-  axios({
-    url: BASE_URL,
-    method: "GET",
-  })
+  foodServ
+    .getList()
     .then((res) => {
       console.log(res);
       renderFoodList(res.data);
@@ -21,10 +20,8 @@ fetchFoodList();
 // tách service
 
 let deleteFood = (id) => {
-  axios({
-    url: `${BASE_URL}/${id}`,
-    method: "DELETE",
-  })
+  foodServ
+    .deleteFood(id)
     .then((res) => {
       console.log(res);
       alert("thành công");
@@ -36,3 +33,16 @@ let deleteFood = (id) => {
 };
 
 window.deleteFood = deleteFood;
+
+window.addFood = () => {
+  console.log("ok");
+  let data = layThongTin();
+  foodServ
+    .addFood(data)
+    .then((res) => {
+      fetchFoodList();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
