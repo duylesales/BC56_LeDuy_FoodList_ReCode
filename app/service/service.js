@@ -21,10 +21,19 @@ let addFood = (food) => {
     data: food,
   });
 };
+
+let getDetail = (id) => {
+  return axios({
+    url: `${BASE_URL}/${id}`,
+    method: "GET",
+  });
+};
+
 let foodServ = {
   getList,
   deleteFood,
   addFood,
+  getDetail,
 };
 
 export default foodServ;
