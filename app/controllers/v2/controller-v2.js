@@ -5,8 +5,9 @@ const CON_MON = true;
 
 export let renderFoodList = (list) => {
   let contentHTML = "";
-  list.forEach(
-    ({ ma, ten, loai, gia, khuyenMai, tinhTrang, moTa, hinhAnh }) => {
+  list
+    .reverse()
+    .forEach(({ ma, ten, loai, gia, khuyenMai, tinhTrang, moTa, hinhAnh }) => {
       let trString = `<tr>
                   <td>${ma}</td>
                   <td>${ten}</td>
@@ -25,9 +26,10 @@ export let renderFoodList = (list) => {
                   </td>
                   </tr>`;
       contentHTML += trString;
-    }
-  );
+    });
   document.getElementById("tbodyFood").innerHTML = contentHTML;
 };
 
-export let layThongTinTuForm = () => {};
+export let onSuccess = (message) => {
+  Swal.fire(message, "", "success");
+};

@@ -1,4 +1,4 @@
-import { renderFoodList } from "./controller-v2.js";
+import { onSuccess, renderFoodList } from "./controller-v2.js";
 import foodServ from "../../service/service.js";
 import { layThongTin } from "../v1/controller-v1.js";
 
@@ -24,7 +24,7 @@ let deleteFood = (id) => {
     .deleteFood(id)
     .then((res) => {
       console.log(res);
-      alert("thành công");
+      onSuccess("Xoá thành công");
       fetchFoodList();
     })
     .catch((err) => {
@@ -40,6 +40,8 @@ window.addFood = () => {
   foodServ
     .addFood(data)
     .then((res) => {
+      $("#exampleModal").modal("hide");
+      onSuccess("Thêm thành công");
       fetchFoodList();
     })
     .catch((err) => {
