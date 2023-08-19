@@ -50,6 +50,7 @@ window.addFood = () => {
 };
 
 window.editFood = (id) => {
+  document.getElementById("exampleModalLabel").innerText = "Sửa Món Ăn";
   $("#exampleModal").modal("show");
   foodServ
     .getDetail(id)

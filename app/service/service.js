@@ -15,6 +15,7 @@ let deleteFood = (id) => {
   });
 };
 let addFood = (food) => {
+  document.getElementById("exampleModalLabel").innerText = "Thêm món ăn";
   return axios({
     url: BASE_URL,
     method: "POST",
