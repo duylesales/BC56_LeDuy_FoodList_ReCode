@@ -64,13 +64,13 @@ window.editFood = (id) => {
 window.updateFood = () => {
   let food = layThongTin();
   console.log(food);
-  axios({
-    url: `https://64cc765e2eafdcdc8519da0a.mockapi.io/food/${food.ma}`,
-    method: "PUT",
-    data: food,
-  })
-    // foodServ
-    //   .updateFood(id, food)
+  // axios({
+  //   url: `https://64cc765e2eafdcdc8519da0a.mockapi.io/food/${food.ma}`,
+  //   method: "PUT",
+  //   data: food,
+  // })
+  foodServ
+    .updateFood(food.ma, food)
     .then((res) => {
       fetchFoodList();
       console.log(res);
