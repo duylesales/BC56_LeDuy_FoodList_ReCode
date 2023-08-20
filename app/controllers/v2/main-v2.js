@@ -61,10 +61,16 @@ window.editFood = (id) => {
       console.log(err);
     });
 };
-window.updateFood = (id) => {
-  let data = layThongTin(id);
-  foodServ
-    .updateFood(id, data)
+window.updateFood = () => {
+  let food = layThongTin();
+  console.log(food);
+  axios({
+    url: `https://64cc765e2eafdcdc8519da0a.mockapi.io/food/${food.ma}`,
+    method: "PUT",
+    data: food,
+  })
+    // foodServ
+    //   .updateFood(id, food)
     .then((res) => {
       fetchFoodList();
       console.log(res);
