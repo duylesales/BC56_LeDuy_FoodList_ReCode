@@ -17,7 +17,6 @@ let fetchFoodList = () => {
     });
 };
 fetchFoodList();
-// tách service
 
 let deleteFood = (id) => {
   foodServ
@@ -57,6 +56,20 @@ window.editFood = (id) => {
     .then((res) => {
       console.log(res);
       showDataForm(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+window.updateFood = (id) => {
+  let data = layThongTin(id);
+  foodServ
+    .updateFood(id, data)
+    .then((res) => {
+      fetchFoodList();
+      console.log(res);
+      $("#exampleModal").modal("hide");
+      onSuccess("Cập nhật thành công");
     })
     .catch((err) => {
       console.log(err);

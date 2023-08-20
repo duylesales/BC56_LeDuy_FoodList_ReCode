@@ -40,6 +40,8 @@ export let showDataForm = (data) => {
   document.getElementById("tinhTrang").value = tinhTrang;
   document.getElementById("hinhMon").value = moTa;
   document.getElementById("moTa").value = hinhAnh;
+
+  document.getElementById("foodID").disabled = true;
 };
 export let onSuccess = (message) => {
   Swal.fire(message, "", "success");
